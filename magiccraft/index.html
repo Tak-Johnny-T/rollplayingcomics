@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THE MAGIC CRAFT｜THE ROLLPLAYING COMICS</title>
+<meta name="description" content="ロールプレイングコミック『THE MAGIC CRAFT』公式ページ。探索・ターン制バトル・クラフトで進む、プレイできる漫画。">
+<meta property="og:title" content="THE MAGIC CRAFT｜THE ROLLPLAYING COMICS">
+<meta property="og:description" content="魔法の機械『マジッククラフト』の発達により、変わりはじめる世界。">
+<meta property="og:type" content="article">
+<meta property="og:image" content="../assets/img/top_banner_mc.webp">
+<style>
+  :root{
+    --bg:#ffffff;--bg2:#f6f7f8;--ink:#1b1e22;--muted:#666e74;--line:#e6e8ea;
+    --cyan:#0f8b8d;--amber:#c1741f;
+    --maxw:1080px;
+    --display:"Futura","Century Gothic","Avenir Next","Segoe UI",system-ui,sans-serif;
+    --body:"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#14171a;--bg2:#1b1f23;--ink:#eceef0;--muted:#98a0a6;--line:#2a2f34;--cyan:#3fb7b9;--amber:#d98f3f}
+  }
+  :root[data-theme="light"]{--bg:#ffffff;--bg2:#f6f7f8;--ink:#1b1e22;--muted:#666e74;--line:#e6e8ea;--cyan:#0f8b8d;--amber:#c1741f}
+  :root[data-theme="dark"]{--bg:#14171a;--bg2:#1b1f23;--ink:#eceef0;--muted:#98a0a6;--line:#2a2f34;--cyan:#3fb7b9;--amber:#d98f3f}
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.8;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit;text-decoration:none}
+  .ph{display:flex;align-items:center;justify-content:center;text-align:center;
+    background:repeating-linear-gradient(45deg,var(--bg2),var(--bg2) 12px,transparent 12px,transparent 24px);
+    border:1px dashed var(--line);color:var(--muted);font-size:12.5px;line-height:1.6;padding:16px}
+
+  /* ヘッダー */
+  .hd{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .hd-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 24px}
+  .logo{font-family:var(--display);font-weight:800;letter-spacing:.14em;font-size:15px}
+  .logo .ci{color:var(--cyan)}
+  .back{font-size:13px;color:var(--muted);font-weight:600;white-space:nowrap}
+  .back:hover{color:var(--ink)}
+  nav.main{display:flex;gap:22px;font-size:13px;font-weight:600}
+  nav.main a{color:var(--muted)} nav.main a:hover{color:var(--ink)}
+  @media(max-width:720px){nav.main{display:none}}
+
+  /* ヒーロー（深海の味付けは後づけ予定枠） */
+  .hero{position:relative;border-bottom:1px solid var(--line)}
+  /* width:100%を明示しないと、min-heightからaspect-ratio経由で幅が逆算され横スクロールが出る */
+  .hero .kv{width:100%;aspect-ratio:24/5;min-height:170px;
+    background:linear-gradient(160deg,#0d3247,#061722);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .hero .kv .inner{text-align:center;color:#eaf9ff;z-index:1;padding:22px 20px}
+  .hero .kv h1{font-family:var(--display);font-weight:800;letter-spacing:.05em;
+    font-size:clamp(24px,4.4vw,42px);margin:0;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+  .hero .kv .jp{margin:6px 0 0;letter-spacing:.36em;font-size:11px;color:#9fc7d0}
+  .hero .kv .catch{margin:12px auto 0;max-width:560px;font-size:13px;color:#cfe4ee}
+
+  /* 共通セクション */
+  section.block{max-width:var(--maxw);margin:0 auto;padding:clamp(40px,6vw,64px) 24px}
+  /* 冒頭の概要だけは詰める（ページ上部が重くなるため） */
+  section.block.intro{padding-top:clamp(26px,3.5vw,36px);padding-bottom:clamp(26px,3.5vw,36px)}
+  section.block.intro h2.t{font-size:clamp(17px,2.1vw,21px)}
+  section.block.intro .lead{font-size:13.5px}
+  .eyebrow{margin:0 0 10px;font-family:var(--display);font-weight:700;letter-spacing:.24em;font-size:12px;text-transform:uppercase;color:var(--cyan)}
+  h2.t{margin:0 0 8px;font-family:var(--display);font-weight:800;font-size:clamp(22px,3.2vw,30px);letter-spacing:.02em}
+  .lead{margin:0;color:var(--muted);max-width:660px}
+  .divider{height:1px;background:var(--line);max-width:var(--maxw);margin:0 auto}
+
+  /* エピソード入口（縦積み） */
+  .eps{display:grid;gap:20px;margin-top:26px}
+  .ep{display:grid;grid-template-columns:340px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg);transition:.2s}
+  a.ep:hover{border-color:var(--cyan);box-shadow:0 6px 24px rgba(0,0,0,.07)}
+  .ep .thumb{width:100%;height:100%;object-fit:cover;background:var(--bg2)}
+  /* Ep3は本文が短いので、この枠でカードの高さを決める。
+     縦長原画の上部（街のコマ）を、コマの枠線が入らないところまで寄って切り抜く */
+  .ep .thumb-wrap{aspect-ratio:16/10;overflow:hidden;background:var(--bg2)}
+  .ep .thumb-wrap img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;transform:scale(1.18)}
+  .ep .thumb.ph{aspect-ratio:16/10;border:none;border-right:1px dashed var(--line)}
+  .ep-body{padding:22px 24px 24px}
+  .ep-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .ep-no{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.04em}
+  .ep-date{font-size:12px;color:var(--muted)}
+  .badge{font-size:11px;font-weight:800;letter-spacing:.06em;padding:4px 10px;border-radius:999px}
+  .badge.award{background:color-mix(in srgb,var(--cyan) 14%,transparent);color:var(--cyan)}
+  .badge.wip{background:color-mix(in srgb,var(--amber) 14%,transparent);color:var(--amber)}
+  .ep-body p{margin:12px 0 16px;color:var(--muted);font-size:14px}
+  .ep-go{font-size:14px;font-weight:700;color:var(--cyan)}
+  .ep-go.wait{color:var(--muted)}
+  @media(max-width:640px){.ep{grid-template-columns:1fr}.ep .thumb.ph{border-right:none;border-bottom:1px dashed var(--line)}}
+
+  /* ボタン */
+  .btn{display:inline-flex;align-items:center;gap:.5em;padding:11px 22px;border-radius:6px;
+    border:1.5px solid var(--cyan);color:var(--cyan);font-weight:700;font-size:14px;transition:.2s}
+  .btn:hover{background:var(--cyan);color:#fff}
+
+  /* ファンアート */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+  @media(max-width:720px){.grid4{grid-template-columns:repeat(2,1fr)}}
+  .fa img{aspect-ratio:4/3;width:100%;object-fit:cover;border-radius:10px;background:var(--bg2);transition:.2s}
+  .fa:hover img{opacity:.85}
+  .sec-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .sec-head .more{font-size:13px;color:var(--cyan);font-weight:700}
+
+  /* 基本情報テーブル */
+  .specwrap{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  table.spec{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px}
+  table.spec th,table.spec td{text-align:left;padding:14px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.spec th{width:180px;color:var(--muted);font-weight:700;white-space:nowrap}
+  @media(max-width:560px){table.spec th{width:120px}}
+  h2.t.sub{margin-top:38px;font-size:clamp(18px,2.4vw,22px)}
+  .overview{margin:14px 0 0;padding-left:1.2em;color:var(--muted);font-size:14px}
+  .overview li{margin-bottom:6px}
+
+  /* フッター */
+  footer{border-top:1px solid var(--line);background:var(--bg2)}
+  .ft-in{max-width:var(--maxw);margin:0 auto;padding:30px 24px;text-align:center;color:var(--muted);font-size:12.5px}
+  .ft-in a{color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-in">
+    <a class="back" href="../">◂ TOP</a>
+    <a class="logo" href="../">THE ROLLPLAYING <span class="ci">COMICS</span></a>
+    <nav class="main">
+      <a href="#episodes">エピソード</a>
+      <a href="#fanart">ファンアート</a>
+      <a href="#info">基本情報</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ヒーロー：深海の味付けは後づけ予定 -->
+<section class="hero">
+  <div class="kv">
+    <div class="inner">
+      <h1>THE MAGIC CRAFT</h1>
+      <p class="jp">マジッククラフト</p>
+      <p class="catch">魔法の機械『マジッククラフト』の発達により変わりはじめようとする世界。<br>少年と少女は変革の時代を駆け抜ける。<br>プレイできる漫画「ロールプレイングコミック」で展開する冒険活劇！</p>
+    </div>
+  </div>
+</section>
+
+<!-- エピソード入口一覧 -->
+<section class="block" id="episodes">
+  <p class="eyebrow">Episodes</p>
+  <h2 class="t">エピソード</h2>
+  <div class="eps">
+
+    <a class="ep" href="ep1.html">
+      <img class="thumb" src="../assets/img/mc_ep1_banner.webp" width="973" height="615" alt="Episode 1">
+      <div class="ep-body">
+        <div class="ep-meta">
+          <span class="ep-no">Episode 1</span>
+          <span class="ep-date">2018年8月公開</span>
+        </div>
+        <p>少年ダンは、マジッククラフト職人の少女ニナと出会う。<br>ダンは彼女の探し物のために一肌脱ぐが、展開は予想外の方向に……。</p>
+        <span class="ep-go">ENTER ▸</span>
+      </div>
+    </a>
+
+    <a class="ep" href="ep2.html">
+      <img class="thumb" src="../assets/img/mc_ep2_banner.webp" width="973" height="615" alt="Episode 2" loading="lazy">
+      <div class="ep-body">
+        <div class="ep-meta">
+          <span class="ep-no">Episode 2</span>
+          <span class="ep-date">2020年2月公開</span>
+        </div>
+        <p>マジッククラフト開発のため借金を背負ってしまったニナ。<br>返済のためダンとニナはある作戦を思いつく。</p>
+        <span class="ep-go">ENTER ▸</span>
+      </div>
+    </a>
+
+    <div class="ep">
+      <div class="thumb-wrap">
+        <img src="../assets/img/mc_extra_0_003b.webp" width="640" height="960" alt="Episode 3" loading="lazy">
+      </div>
+      <div class="ep-body">
+        <div class="ep-meta">
+          <span class="ep-no">Episode 3</span>
+          <span class="badge wip">鋭意制作中</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ファンアート入口 -->
+<section class="block" id="fanart">
+  <div class="sec-head">
+    <div><p class="eyebrow">Fan Arts</p><h2 class="t">ファンアート</h2></div>
+    <a class="more" href="fanart.html">ファンアートをすべて見る ▸</a>
+  </div>
+  <p class="lead">頂いたファンアートの紹介です。</p>
+  <div class="grid4">
+    <a class="fa" href="fanart.html"><img src="../assets/img/fanart_01_waga.webp" alt="ファンアート" loading="lazy"></a>
+    <a class="fa" href="fanart.html"><img src="../assets/img/fanart_05_rikka.webp" alt="ファンアート" loading="lazy"></a>
+    <a class="fa" href="fanart.html"><img src="../assets/img/fanart_07_amayadori.webp" alt="ファンアート" loading="lazy"></a>
+    <a class="fa" href="fanart.html"><img src="../assets/img/fanart_10_enichiyo.webp" alt="ファンアート" loading="lazy"></a>
+  </div>
+</section>
+
+<!-- 基本情報 -->
+<div class="specwrap" id="info">
+  <section class="block" style="padding-top:clamp(40px,6vw,60px);padding-bottom:clamp(40px,6vw,60px)">
+    <p class="eyebrow">Game Info</p>
+    <h2 class="t">基本情報</h2>
+    <table class="spec">
+      <tr><th>タイトル</th><td>『THE MAGIC CRAFT』</td></tr>
+      <tr><th>ジャンル</th><td>ロールプレイングコミック（SFファンタジー少年漫画 × アドベンチャーRPG）</td></tr>
+      <tr><th>プラットフォーム</th><td>ブラウザ版、ダウンロード版（Win、Mac）</td></tr>
+      <tr><th>プレイ人数</th><td>1人</td></tr>
+      <tr><th>プレイ時間</th><td>最短15分〜／エピソード（やり込みコンプ、難易度別チャレンジで2時間以上）</td></tr>
+      <tr><th>価格</th><td>無料</td></tr>
+    </table>
+
+    <h2 class="t sub">ゲーム概要</h2>
+    <ul class="overview">
+      <li>『THE MAGIC CRAFT』は、SFファンタジー少年漫画とアドベンチャーRPGを掛け合わせたロールプレイングコミックです。</li>
+      <li>フィールド背景をタッチしてエリア移動や探索・人々との交流などを行います。</li>
+      <li>マップ上に散りばめられた、バトル、アイテムコレクト、クラフトによる能力の上昇や拡張、謎解き、サブクエスト、ミニゲームなど様々なゲーム要素を楽しめます。</li>
+      <li>バトルはターン制コマンド入力型RPGです。</li>
+      <li>異なる難易度でお楽しみいただけます。（EASY＝漫画や物語をスムーズに楽しみたい層、NORMAL以上＝手応えのあるゲームを楽しみたい層）</li>
+      <li>HARDモードなど、おまけコンテンツもあります。</li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <div class="ft-in">
+    <a href="../">◂ TOPへ戻る</a>　｜　© 2026 T. Johnny T.　THE ROLLPLAYING COMICS
+  </div>
+</footer>
+
+</body>
+</html>

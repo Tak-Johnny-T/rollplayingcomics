@@ -1,0 +1,13 @@
+Thumbs.db
+desktop.ini
+.DS_Store
+__pycache__/
+
+# 変換前の原本は公開しない（配信するのは .webp だけ）
+assets/img/*.png
+assets/img/*.jpg
+assets/img/*.jpeg
+
+# 移設時の叩き台。実ページに置き換え済み
+rpc-top-v2.html
+rpc-magiccraft.html

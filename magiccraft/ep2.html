@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Episode 2｜THE MAGIC CRAFT</title>
+<meta name="description" content="THE MAGIC CRAFT Episode 2。技術部門 優秀賞。">
+<meta property="og:title" content="THE MAGIC CRAFT Episode 2">
+<meta property="og:type" content="article">
+<meta property="og:image" content="../assets/img/mc_ep2_banner.webp">
+<style>
+  :root{
+    --bg:#ffffff;--bg2:#f6f7f8;--ink:#1b1e22;--muted:#666e74;--line:#e6e8ea;
+    --cyan:#0f8b8d;--amber:#c1741f;
+    --maxw:1080px;
+    --display:"Futura","Century Gothic","Avenir Next","Segoe UI",system-ui,sans-serif;
+    --body:"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#14171a;--bg2:#1b1f23;--ink:#eceef0;--muted:#98a0a6;--line:#2a2f34;--cyan:#3fb7b9;--amber:#d98f3f}
+  }
+  :root[data-theme="light"]{--bg:#ffffff;--bg2:#f6f7f8;--ink:#1b1e22;--muted:#666e74;--line:#e6e8ea;--cyan:#0f8b8d;--amber:#c1741f}
+  :root[data-theme="dark"]{--bg:#14171a;--bg2:#1b1f23;--ink:#eceef0;--muted:#98a0a6;--line:#2a2f34;--cyan:#3fb7b9;--amber:#d98f3f}
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.8;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit;text-decoration:none}
+
+  .hd{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .hd-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 24px}
+  .logo{font-family:var(--display);font-weight:800;letter-spacing:.14em;font-size:15px}
+  .logo .ci{color:var(--cyan)}
+  .back{font-size:13px;color:var(--muted);font-weight:600;white-space:nowrap}
+  .back:hover{color:var(--ink)}
+
+  section.block{max-width:var(--maxw);margin:0 auto;padding:clamp(32px,5vw,56px) 24px}
+  /* 本文カラムはこの幅に統一する（受賞だけは画像を大きく見せるため広く取る） */
+  .visual,.head,.play{max-width:620px;margin-left:auto;margin-right:auto}
+  .awards{max-width:880px;margin-left:auto;margin-right:auto}
+  .visual img{width:100%;border-radius:10px}
+
+  .head{margin-top:26px}
+  .ep-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .ep-no{font-family:var(--display);font-weight:800;font-size:clamp(22px,3.2vw,30px);letter-spacing:.04em}
+  .ep-date{font-size:12px;color:var(--muted)}
+  .badge{font-size:11px;font-weight:800;letter-spacing:.06em;padding:4px 10px;border-radius:999px}
+  .badge.award{background:color-mix(in srgb,var(--cyan) 14%,transparent);color:var(--cyan)}
+  .story{margin:14px 0 0;color:var(--muted)}
+
+  /* プレイ導線：既存サイトと同じ「見出し＋配信先ボタン」の並び */
+  .play{margin-top:30px}
+  .play-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px}
+  .play-label{margin:0;font-size:13px;font-weight:700;color:var(--muted);min-width:9.5em}
+  .btns{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* 受賞：賞は画像で見せる。既存サイトの見え方に合わせて大きめ・幅は賞ごとに変える */
+  .awards{margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+  .award-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:26px}
+  .award{margin:0;flex:none}
+  .award img{width:100%;border-radius:8px;transition:.2s}
+  .award a:hover img{opacity:.84}
+  .award figcaption{margin-top:10px;font-size:13px;color:var(--muted);text-align:center;line-height:1.75}
+  .award-fes{display:block;font-size:12px;letter-spacing:.02em}
+  .award-title{display:block;font-weight:800;color:var(--ink);font-size:15px;margin:2px 0 4px}
+  .w-tech{width:280px} .w-sponsor{width:230px} .w-thanks{width:290px}
+  @media(max-width:720px){.w-tech,.w-sponsor,.w-thanks{width:min(320px,100%)}}
+
+  .back-btm{max-width:620px;margin:0 auto;padding:0 24px clamp(32px,5vw,52px);text-align:center}
+  .btn{display:inline-flex;align-items:center;gap:.5em;padding:11px 22px;border-radius:6px;
+    border:1.5px solid var(--cyan);color:var(--cyan);font-weight:700;font-size:14px;transition:.2s}
+  .btn:hover{background:var(--cyan);color:#fff}
+  .btn.solid{background:var(--cyan);color:#fff}
+  .btn.solid:hover{filter:brightness(1.08)}
+  .btn.ghost{border-color:var(--line);color:var(--muted)}
+  .btn.ghost:hover{background:var(--bg2);color:var(--ink)}
+
+  .pager{max-width:620px;margin:0 auto;padding:0 24px clamp(24px,4vw,40px);display:flex;justify-content:space-between;gap:16px;font-size:14px;font-weight:700}
+  .pager a{color:var(--cyan)}
+  .pager span{color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);background:var(--bg2)}
+  .ft-in{max-width:var(--maxw);margin:0 auto;padding:30px 24px;text-align:center;color:var(--muted);font-size:12.5px}
+  .ft-in a{color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-in">
+    <a class="back" href="./">◂ THE MAGIC CRAFT</a>
+    <a class="logo" href="../">THE ROLLPLAYING <span class="ci">COMICS</span></a>
+  </div>
+</header>
+
+<section class="block">
+  <div class="visual">
+    <img src="../assets/img/mc_ep2_banner.webp" width="973" height="615" alt="THE MAGIC CRAFT Episode 2">
+  </div>
+
+  <div class="head">
+    <div class="ep-meta">
+      <span class="ep-no">Episode 2</span>
+      <span class="ep-date">2020年2月公開</span>
+    </div>
+    <p class="story">
+      とある事情でお金が必要になったダンとニナはマジッククラフトを使った人助けを思いつく。<br>
+      活動を重ねるうちに、ニナの評判とマジッククラフトの認知度は徐々に上がっていく。<br>
+      一方、ニナは裏社会の賞金稼ぎに狙われる「闇依頼（ブラッククエスト）」の対象になっている可能性があるという。<br>
+      誰が何の為ニナを狙うのか……。
+    </p>
+  </div>
+
+  <div class="play">
+    <div class="play-row">
+      <p class="play-label">ブラウザで遊ぶ</p>
+      <div class="btns">
+        <a class="btn solid" href="https://novelgame.jp/games/show/2908" target="_blank" rel="noopener">ノベルゲームコレクション</a>
+        <a class="btn solid" href="https://www.freem.ne.jp/win/game/22095" target="_blank" rel="noopener">ふりーむ</a>
+        <a class="btn solid" href="https://plicy.net/GamePlay/90707" target="_blank" rel="noopener">PLiCy</a>
+      </div>
+    </div>
+    <div class="play-row">
+      <p class="play-label">ダウンロードで遊ぶ</p>
+      <div class="btns">
+        <a class="btn" href="https://tjohnnyt.booth.pm/items/2500352" target="_blank" rel="noopener">Windows版</a>
+        <a class="btn" href="https://tjohnnyt.booth.pm/items/2500382" target="_blank" rel="noopener">Mac版</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="awards">
+    <div class="award-list">
+      <figure class="award w-tech">
+        <a href="https://novelgame.jp/fes2020/result" target="_blank" rel="noopener">
+          <img src="../assets/img/award_ep2_tech.webp" width="600" height="500" alt="ティラノゲームフェス2020 技術部門 優秀賞" loading="lazy">
+        </a>
+        <figcaption>
+          <span class="award-fes">ティラノゲームフェス2020</span>
+          <span class="award-title">【技術部門 優秀賞】</span>
+        </figcaption>
+      </figure>
+      <figure class="award w-sponsor">
+        <a href="https://novelgame.jp/fes2020/result" target="_blank" rel="noopener">
+          <img src="../assets/img/award_ep2_sponsor.webp" width="600" height="600" alt="ティラノゲームフェス2020 スポンサー賞" loading="lazy">
+        </a>
+        <figcaption>
+          <span class="award-fes">ティラノゲームフェス2020</span>
+          <span class="award-title">【スポンサー賞】</span>
+          弐藤様、加藤匠様、たつみ様<br>
+          プレイ、応援、ご支援、本当にありがとうございました！
+        </figcaption>
+      </figure>
+      <figure class="award w-thanks">
+        <a href="https://novelgame.jp/fes2020/result" target="_blank" rel="noopener">
+          <img src="../assets/img/award_ep2_thanks.webp" width="600" height="600" alt="ティラノゲームフェス2020 ありがとうございました" loading="lazy">
+        </a>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<nav class="pager">
+  <a href="ep1.html">◂ Episode 1</a>
+  <span>Episode 3 は鋭意制作中</span>
+</nav>
+
+<div class="back-btm">
+  <a class="btn ghost" href="./">◂ THE MAGIC CRAFT に戻る</a>
+</div>
+
+<footer>
+  <div class="ft-in">
+    <a href="./">◂ THE MAGIC CRAFT</a>　｜　© 2026 T. Johnny T.　THE ROLLPLAYING COMICS
+  </div>
+</footer>
+
+</body>
+</html>
