@@ -135,6 +135,28 @@
   <a class="btn" href="./">◂ TOPへ戻る</a>
 </div>
 
+<script>
+  // このポリシーは3サイト共通。他サイトから開かれたときに「戻る」がRPCサイトへ
+  // 飛んでしまわないよう、?from= の指定で戻り先を差し替える。
+  // ※ 独自ドメインへ切り替えるときは、ここのURLも直すこと
+  (function(){
+    var SITES = {
+      illust:   { url:'https://tak-johnny-t.github.io/illust/',
+                  top:'ILLUSTRATION', back:'イラストのサイトへ戻る' },
+      scenario: { url:'https://tak-johnny-t.github.io/my-portfolio/',
+                  top:'SCENARIO',     back:'シナリオのサイトへ戻る' }
+    };
+    var from = new URLSearchParams(location.search).get('from');
+    var site = SITES[from];
+    if (!site) return;
+
+    var hd = document.querySelector('.hd .back');
+    if (hd){ hd.href = site.url; hd.textContent = '◂ ' + site.top; }
+    var btm = document.querySelector('.back-btm .btn');
+    if (btm){ btm.href = site.url; btm.textContent = '◂ ' + site.back; }
+  })();
+</script>
+
 <footer>
   <div class="ft-in">
     © 2026 T.Johnny T. All Rights Reserved.
