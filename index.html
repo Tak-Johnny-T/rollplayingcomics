@@ -73,11 +73,11 @@
     border-radius:10px;overflow:hidden;background:var(--bg2)}
   .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:0;transform:scale(1.07);
-    transition:opacity 1.6s ease, transform 7.5s ease-out}
+    transition:opacity .9s ease, transform 3.6s ease-out}
   .slides img.on{opacity:1;transform:scale(1)}
   /* 省モーション設定時はズームだけ止め、クロスフェードは残す */
   @media (prefers-reduced-motion: reduce){
-    .slides img{transform:none;transition:opacity 1.6s ease}
+    .slides img{transform:none;transition:opacity .9s ease}
     .slides img.on{transform:none}
   }
 
@@ -116,7 +116,9 @@
   .ft-links a{color:var(--muted);border-bottom:1px solid transparent;transition:.2s}
   .ft-links a:hover{color:var(--ink);border-color:var(--ink)}
   .ft-sister{font-size:12.5px;color:var(--muted)}
-  .ft-sister a{color:var(--cyan);font-weight:600}
+  /* 他の2サイトに合わせ、通常時は本文と同じ落ち着いた色にする */
+  .ft-sister a{color:var(--muted);border-bottom:1px solid transparent;transition:.2s}
+  .ft-sister a:hover{color:var(--ink);border-color:var(--ink)}
   .ft-copy{font-size:12px;color:var(--muted);letter-spacing:.04em}
 </style>
 </head>
@@ -139,11 +141,12 @@
 </section>
 <div class="keyvisual">
   <div class="slides" id="kv">
-    <img class="on" src="assets/img/mc2_ss1.webp" width="973" height="615" alt="THE MAGIC CRAFT ゲーム画面">
-    <img data-src="assets/img/mc2_ss2.webp" width="973" height="615" alt="">
+    <!-- ss1 はエピソード2へのリンクに見えるため、1枚目には出さず最後に回す -->
+    <img class="on" src="assets/img/mc2_ss2.webp" width="973" height="615" alt="THE MAGIC CRAFT ゲーム画面">
     <img data-src="assets/img/mc2_ss3.webp" width="973" height="615" alt="">
     <img data-src="assets/img/mc2_ss4.webp" width="973" height="615" alt="">
     <img data-src="assets/img/mc2_ss5.webp" width="973" height="615" alt="">
+    <img data-src="assets/img/mc2_ss1.webp" width="973" height="615" alt="">
   </div>
 </div>
 
@@ -186,7 +189,7 @@
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSeui29FGyXYhR1Mo0TonZezHwBSDz85p7EAmpCHDQXueDoqeA/viewform" target="_blank" rel="noopener">お問合せ</a>
       <a href="privacy.html">プライバシーポリシー</a>
     </div>
-    <p class="ft-copy">© 2026 T. Johnny T.　THE ROLLPLAYING COMICS</p>
+    <p class="ft-copy">© 2026 T.Johnny T. All Rights Reserved.</p>
   </div>
 </footer>
 
@@ -220,7 +223,7 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })();
 
-  // ヒーロー画像の自動ローテーション（5秒ごとにクロスフェード）
+  // ヒーロー画像の自動ローテーション（3秒ごとにクロスフェード）
   // 1枚目だけ即時読み込み、2枚目以降は表示後に1枚ずつ追加する。
   // 5枚を一度に取りにいくと初期表示が重く、同時接続でも落ちるため。
   (function(){
@@ -243,7 +246,7 @@
       pre.onload = function(){
         el.src = pre.src;
         live.push(el);
-        if (!timer) timer = setInterval(rotate, 6500);  // ズーム(7.5s)が効く長さを確保
+        if (!timer) timer = setInterval(rotate, 3000);  // クロスフェード(0.9s)・ズーム(3.6s)に合わせる
         loadNext();
       };
       pre.onerror = function(){ el.remove(); loadNext(); };  // 落ちた画像はローテーションから外す
