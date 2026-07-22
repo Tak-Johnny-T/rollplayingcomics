@@ -60,6 +60,8 @@
   .awards{margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
   .award-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:26px}
   .award{margin:0;flex:none;width:min(400px,100%)}
+  /* スマホでは幅いっぱいだと賞バッジが本編ビジュアルと同じ大きさになってしまう */
+  @media(max-width:720px){.award{width:min(260px,72%)}}
   .award img{width:100%;border-radius:8px;transition:.2s}
   .award a:hover img{opacity:.84}
   .award figcaption{margin-top:10px;font-size:13px;color:var(--muted);text-align:center;line-height:1.75}

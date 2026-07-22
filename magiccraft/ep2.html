@@ -66,7 +66,8 @@
   .award-fes{display:block;font-size:12px;letter-spacing:.02em}
   .award-title{display:block;font-weight:800;color:var(--ink);font-size:15px;margin:2px 0 4px}
   .w-tech{width:280px} .w-sponsor{width:230px} .w-thanks{width:290px}
-  @media(max-width:720px){.w-tech,.w-sponsor,.w-thanks{width:min(320px,100%)}}
+  /* スマホでは幅いっぱいだと賞バッジが本編ビジュアルと同じ大きさになってしまう */
+  @media(max-width:720px){.w-tech,.w-sponsor,.w-thanks{width:min(230px,68%)}.award-list{gap:20px}}
 
   .back-btm{max-width:620px;margin:0 auto;padding:0 24px clamp(32px,5vw,52px);text-align:center}
   .btn{display:inline-flex;align-items:center;gap:.5em;padding:11px 22px;border-radius:6px;

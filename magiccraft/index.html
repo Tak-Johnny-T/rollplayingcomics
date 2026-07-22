@@ -55,6 +55,8 @@
     font-size:clamp(24px,4.4vw,42px);margin:0;text-shadow:0 2px 20px rgba(0,0,0,.4)}
   .hero .kv .jp{margin:6px 0 0;letter-spacing:.36em;font-size:11px;color:#9fc7d0}
   .hero .kv .catch{margin:12px auto 0;max-width:560px;font-size:13px;color:#cfe4ee}
+  /* スマホでは24:5の帯に紹介文が収まらず切れるので、高さは中身に任せる */
+  @media(max-width:720px){.hero .kv{aspect-ratio:auto;min-height:0;padding:8px 0}}
 
   /* 共通セクション */
   section.block{max-width:var(--maxw);margin:0 auto;padding:clamp(40px,6vw,64px) 24px}
@@ -87,7 +89,14 @@
   .ep-body p{margin:12px 0 16px;color:var(--muted);font-size:14px}
   .ep-go{font-size:14px;font-weight:700;color:var(--cyan)}
   .ep-go.wait{color:var(--muted)}
-  @media(max-width:640px){.ep{grid-template-columns:1fr}.ep .thumb.ph{border-right:none;border-bottom:1px dashed var(--line)}}
+  @media(max-width:640px){
+    .ep{grid-template-columns:1fr}
+    /* 1カラムでは height:100% の基準が決まらず、画像が本文の上に重なって伸びる。
+       バナーはタイトル文字が焼き込まれているので、切らずに元の比率で置く */
+    .ep .thumb{height:auto;object-fit:contain}
+    .ep .thumb-wrap{aspect-ratio:16/9}
+    .ep .thumb.ph{aspect-ratio:16/9;border-right:none;border-bottom:1px dashed var(--line)}
+  }
 
   /* ボタン */
   .btn{display:inline-flex;align-items:center;gap:.5em;padding:11px 22px;border-radius:6px;
